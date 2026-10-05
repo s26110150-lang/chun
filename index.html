@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的網頁程式設計冒險作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', 'Orbitron', sans-serif;
+            background: radial-gradient(circle at center, #0c1b33 0%, #050b14 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        .gaming-title {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        /* 酷炫微光與浮動特效 */
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(56, 189, 248, 0.4), inset 0 0 15px rgba(56, 189, 248, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(56, 189, 248, 0.8), inset 0 0 25px rgba(56, 189, 248, 0.4);
+            }
+        }
+
+        .unlocked-btn {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            border: 2px solid #38bdf8;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+
+        .unlocked-btn:hover {
+            transform: translateY(-6px) scale(1.03);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.6), 0 8px 10px -6px rgba(14, 165, 233, 0.6);
+            border-color: #bae6fd;
+        }
+
+        .locked-btn {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid #334155;
+            color: #64748b;
+            cursor: not-allowed;
+            transition: all 0.2s ease;
+        }
+
+        .locked-btn:hover {
+            border-color: #475569;
+            color: #94a3b8;
+            transform: translateY(-2px);
+        }
+
+        /* 背景網格動態感 */
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+        }
+
+        /* 大頭貼科技光環 */
+        .avatar-glow {
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.3), 0 0 25px rgba(14, 165, 233, 0.6);
+        }
+    </style>
+</head>
+<body class="cyber-grid flex flex-col items-center justify-between min-h-screen p-4 sm:p-8">
+
+    <header class="w-full max-w-5xl mx-auto text-center mt-6 mb-10">
+        <div class="inline-block p-1 rounded-full bg-gradient-to-r from-sky-500 via-cyan-400 to-blue-600 mb-4 avatar-glow animate-pulse">
+            <img src="https://i.postimg.cc/prgLpzSg/1789361584200-(1).jpg" alt="作者大頭貼" class="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover border-4 border-slate-900">
+        </div>
+        <h1 class="gaming-title text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-200 to-blue-500 mb-2 drop-shadow-lg">
+            網頁程式設計作品集
+        </h1>
+        <p class="text-sky-300/80 text-sm sm:text-base tracking-widest uppercase font-semibold">
+            Web Programming Quest Portal — 陳郁淳
+        </p>
+    </header>
+
+    <main class="w-full max-w-5xl mx-auto flex-grow mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            
+            <!-- 按鈕 1 -->
+            <a href="w1/index.html" class="unlocked-btn group relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-lg overflow-hidden">
+                <div class="absolute -right-6 -top-6 w-16 h-16 bg-sky-400/10 rounded-full blur-md group-hover:bg-sky-400/30 transition-all"></div>
+                <span class="gaming-title text-xs font-bold text-sky-300 mb-1 tracking-wider">QUEST 01</span>
+                <span class="text-base sm:text-lg font-bold text-white group-hover:scale-105 transition-transform">Week 1 - 數位名片</span>
+                <span class="mt-2 text-xs text-sky-200 bg-sky-500/30 px-3 py-1 rounded-full border border-sky-400/40">✨ 點擊進入</span>
+            </a>
+
+            <!-- 按鈕 2 -->
+            <a href="w2/index.html" class="unlocked-btn group relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-lg overflow-hidden">
+                <div class="absolute -right-6 -top-6 w-16 h-16 bg-sky-400/10 rounded-full blur-md group-hover:bg-sky-400/30 transition-all"></div>
+                <span class="gaming-title text-xs font-bold text-sky-300 mb-1 tracking-wider">QUEST 02</span>
+                <span class="text-base sm:text-lg font-bold text-white group-hover:scale-105 transition-transform">Week 2 - 今天吃甚麼?</span>
+                <span class="mt-2 text-xs text-sky-200 bg-sky-500/30 px-3 py-1 rounded-full border border-sky-400/40">✨ 點擊進入</span>
+            </a>
+
+            <!-- 按鈕 3 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 03</span>
+                <span class="text-base sm:text-lg font-bold">Week 3 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 4 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 04</span>
+                <span class="text-base sm:text-lg font-bold">Week 4 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 5 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 05</span>
+                <span class="text-base sm:text-lg font-bold">Week 5 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 6 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 06</span>
+                <span class="text-base sm:text-lg font-bold">Week 6 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 7 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 07</span>
+                <span class="text-base sm:text-lg font-bold">Week 7 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 8 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 08</span>
+                <span class="text-base sm:text-lg font-bold">Week 8 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 9 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 09</span>
+                <span class="text-base sm:text-lg font-bold">Week 9 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 10 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 10</span>
+                <span class="text-base sm:text-lg font-bold">Week 10 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 11 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 11</span>
+                <span class="text-base sm:text-lg font-bold">Week 11 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 12 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 12</span>
+                <span class="text-base sm:text-lg font-bold">Week 12 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 13 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 13</span>
+                <span class="text-base sm:text-lg font-bold">Week 13 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 14 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 14</span>
+                <span class="text-base sm:text-lg font-bold">Week 14 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 15 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 15</span>
+                <span class="text-base sm:text-lg font-bold">Week 15 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+            <!-- 按鈕 16 (未解鎖) -->
+            <div class="locked-btn relative rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-md select-none">
+                <span class="gaming-title text-xs font-bold text-slate-500 mb-1 tracking-wider">QUEST 16</span>
+                <span class="text-base sm:text-lg font-bold">Week 16 任務</span>
+                <span class="mt-2 text-xs text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">🔒 未解鎖</span>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full text-center text-slate-400 text-xs sm:text-sm py-4 border-t border-slate-800/60">
+        <p>&copy; 2026 網頁程式設計課程作品集 | Designed with futuristic blue gaming theme</p>
+    </footer>
+
+</body>
+</html>
