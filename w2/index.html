@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今天吃什麼？ - 隨機抽籤機</title>
+    <!-- Google Fonts 可愛圓潤字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS 樣式區域 -->
+    <style>
+        /* --- 全局基礎樣式 --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Zen Maru Gothic', 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #1e3a8a;
+        }
+
+        /* --- 卡片容器 --- */
+        .card-container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            padding: 35px 25px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.25);
+            border: 4px solid #38bdf8;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        /* --- 標題區域 --- */
+        .header-section {
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #0284c7;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .main-title {
+            font-size: 2rem;
+            color: #0369a1;
+            font-weight: 900;
+            word-break: break-word;
+            transition: transform 0.3s ease;
+        }
+
+        /* 抽籤時的快速切換效果 */
+        .main-title.shuffling {
+            opacity: 0.6;
+            transform: scale(0.95);
+        }
+
+        /* 生動彈跳動畫 class */
+        .main-title.bounce {
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        /* --- 美食照片區域 --- */
+        .image-wrapper {
+            width: 100%;
+            height: 220px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid #7dd3fc;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- 點我抽籤按鈕 --- */
+        .primary-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: inherit;
+            color: #ffffff;
+            background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 0px #0369a1, 0 12px 20px rgba(2, 132, 199, 0.35);
+            transition: all 0.1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .primary-btn:hover {
+            background: linear-gradient(180deg, #7dd3fc 0%, #0369a1 100%);
+            transform: translateY(-2px);
+        }
+
+        .primary-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0px #0369a1, 0 4px 10px rgba(2, 132, 199, 0.35);
+        }
+
+        /* --- Google Maps 馬上出發按鈕 --- */
+        .map-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0284c7;
+            background-color: #e0f2fe;
+            border: 2px dashed #38bdf8;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            animation: bounceIn 0.6s ease;
+        }
+
+        .map-btn:hover {
+            background-color: #bae6fd;
+            color: #0369a1;
+        }
+
+        /* --- 隱藏元件輔助類別 --- */
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- 動畫 Keyframes --- */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- 主標題／抽中結果區域 -->
+        <div class="header-section">
+            <span class="subtitle">✨ 決定困難症救星 ✨</span>
+            <h1 id="food-title" class="main-title">今天吃什麼？</h1>
+        </div>
+
+        <!-- 圖片顯示區域 (預設隱藏，抽中後顯示) -->
+        <div id="image-wrapper" class="image-wrapper hidden">
+            <img id="food-image" src="" alt="美食照片">
+        </div>
+
+        <!-- 主要互動按鈕 -->
+        <button id="draw-btn" class="primary-btn">
+            <span class="btn-icon">🎲</span> 點我抽籤！
+        </button>
+
+        <!-- Google Maps 馬上出發按鈕 (預設隱藏，抽中後顯示) -->
+        <a id="map-btn" class="map-btn hidden" href="#" target="_blank" rel="noopener noreferrer">
+            📍 馬上出發前往 Google Map
+        </a>
+    </div>
+
+    <!-- JavaScript 程式邏輯區域 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. 定義 5 家餐廳資訊 (名稱、圖片連結、Google Map 搜尋連結)
+            const foodList = [
+                {
+                    name: "小姊姊雞蛋糕",
+                    image: "https://i.postimg.cc/FR67ztH9/IMG-20260921-153449.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=樹德科技大學小姊姊雞蛋糕"
+                },
+                {
+                    name: "深水食堂",
+                    image: "https://i.postimg.cc/XJqrnN3d/IMG-20260921-153329.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=深水食堂"
+                },
+                {
+                    name: "THE T café 樹德科大店 / TKS FULL HOUSE series",
+                    image: "https://i.postimg.cc/NfJP0p1C/IMG-20260907-140614.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=THE+T+café+樹德科大店"
+                },
+                {
+                    name: "轉角小吃現炒會客菜",
+                    image: "https://i.postimg.cc/269BWb25/IMG-20260921-153313.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=轉角小吃現炒會客菜"
+                },
+                {
+                    name: "品香",
+                    image: "https://i.postimg.cc/nLVHn2BM/IMG-20260921-161408.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=燕巢品香"
+                }
+            ];
+
+            // 2. 取得 HTML 元素
+            const foodTitle = document.getElementById('food-title');
+            const drawBtn = document.getElementById('draw-btn');
+            const imageWrapper = document.getElementById('image-wrapper');
+            const foodImage = document.getElementById('food-image');
+            const mapBtn = document.getElementById('map-btn');
+
+            let isDrawing = false; // 防止重複連續點擊
+
+            // 3. 綁定按鈕點擊事件
+            drawBtn.addEventListener('click', () => {
+                if (isDrawing) return;
+                isDrawing = true;
+
+                // 隱藏之前的圖片與導航按鈕
+                imageWrapper.classList.add('hidden');
+                mapBtn.classList.add('hidden');
+                
+                // 移除先前的彈跳動畫
+                foodTitle.classList.remove('bounce');
+                foodTitle.classList.add('shuffling');
+
+                // 設定快速滾動文字效果 (滾動 1.5 秒)
+                let counter = 0;
+                const shuffleInterval = setInterval(() => {
+                    const randomIndex = Math.floor(Math.random() * foodList.length);
+                    foodTitle.textContent = foodList[randomIndex].name;
+                    counter++;
+                }, 80);
+
+                // 1.5 秒後定格並顯示結果
+                setTimeout(() => {
+                    clearInterval(shuffleInterval);
+
+                    // 隨機選出最終美食
+                    const selectedFood = foodList[Math.floor(Math.random() * foodList.length)];
+
+                    // 更新標題並套用生動彈跳動畫
+                    foodTitle.textContent = selectedFood.name;
+                    foodTitle.classList.remove('shuffling');
+                    
+                    // 強制重繪以確保動畫可重複觸發
+                    void foodTitle.offsetWidth; 
+                    foodTitle.classList.add('bounce');
+
+                    // 替換並顯示圖片
+                    foodImage.src = selectedFood.image;
+                    foodImage.alt = selectedFood.name;
+                    imageWrapper.classList.remove('hidden');
+
+                    // 替換並顯示 Google Maps 按鈕
+                    mapBtn.href = selectedFood.mapUrl;
+                    mapBtn.classList.remove('hidden');
+
+                    isDrawing = false;
+                }, 1500);
+            });
+
+        });
+    </script>
+</body>
+</html>
