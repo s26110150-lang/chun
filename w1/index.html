@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陳郁淳的個人名片</title>
+    
+    <!-- CSS 樣式直接寫在 <style> 標籤內 -->
+    <style>
+        /* ==========================================
+           全域樣式設定 (背景馬卡龍淺藍)
+           ========================================== */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            background-color: #EBF3F8; /* 馬卡龍淡藍色背景 */
+            display: flex;
+            justify-content: center;   /* 水平置中 */
+            align-items: center;       /* 垂直置中 */
+            min-height: 100vh;         /* 填滿螢幕高度 */
+        }
+
+        /* ==========================================
+           名片主卡片樣式
+           ========================================== */
+        .card {
+            background-color: #FFFFFF; /* 卡片白色背景 */
+            width: 85%;
+            max-width: 320px;          /* 限制最大寬度，手機與電腦都精緻 */
+            padding: 40px 25px;
+            border-radius: 24px;       /* 現代感柔和圓角 */
+            text-align: center;        /* 內容全部置中 */
+            
+            /* 現代感微陰影 (Soft Shadow) */
+            box-shadow: 0 12px 30px rgba(160, 196, 225, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* 鼠標移到卡片上時的微浮動效果 */
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 35px rgba(160, 196, 225, 0.45);
+        }
+
+        /* ==========================================
+           圓形大頭貼照片
+           ========================================== */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;        /* 裁切成正圓形 */
+            object-fit: cover;         /* 避免照片變形 */
+            border: 4px solid #D2E5F3; /* 馬卡龍藍色照片邊框 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 16px;
+        }
+
+        /* ==========================================
+           名字與介紹文字
+           ========================================== */
+        .name {
+            margin: 8px 0 6px 0;
+            font-size: 1.6rem;
+            color: #2C3E50;            /* 高級深藍灰色 */
+            font-weight: 700;
+        }
+
+        .bio {
+            margin: 0 0 28px 0;
+            font-size: 0.95rem;
+            color: #6C7A89;            /* 柔和中灰色 */
+            line-height: 1.5;
+        }
+
+        /* ==========================================
+           按鈕區域
+           ========================================== */
+        .button-group {
+            display: flex;
+            flex-direction: column;    /* 按鈕上下垂直排列 */
+            gap: 12px;                 /* 按鈕間距 */
+        }
+
+        .btn {
+            display: block;
+            text-decoration: none;     /* 移除連結底線 */
+            padding: 12px 20px;
+            border-radius: 50px;       /* 圓潤膠囊形按鈕 */
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        /* 按鈕 1：Instagram (主色調 - 馬卡龍水藍) */
+        .btn-instagram {
+            background-color: #9EC5E6;
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(158, 197, 230, 0.45);
+        }
+
+        .btn-instagram:hover {
+            background-color: #83B3DC; /* 滑過時顏色略深 */
+            box-shadow: 0 6px 18px rgba(158, 197, 230, 0.6);
+        }
+
+        /* 按鈕 2：Email (輔助色 - 馬卡龍極淺藍) */
+        .btn-email {
+            background-color: #E2EFF7;
+            color: #4A7A96;
+            box-shadow: 0 4px 12px rgba(226, 239, 247, 0.6);
+        }
+
+        .btn-email:hover {
+            background-color: #D3E5F2; /* 滑過時顏色略深 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 個人名片主體 -->
+    <div class="card">
+        
+        <!-- 1. 圓形大頭貼照片 (檔名請對應你的照片名稱) -->
+        <img src="https://i.postimg.cc/prgLpzSg/1789361584200-(1).jpg" alt="陳郁淳的大頭貼" class="avatar">
+        
+        <!-- 2. 姓名與自我介紹 -->
+        <h1 class="name">陳郁淳</h1>
+        <p class="bio">🎨 興趣是畫畫和烘焙 🧁</p>
+        
+        <!-- 3. 下方社群與聯絡按鈕 -->
+        <div class="button-group">
+            <!-- 請將 href 換成你的 Instagram 帳號網址 -->
+            <a href="https://www.instagram.com" target="_blank" class="btn btn-instagram">
+                Instagram
+            </a>
+            
+            <!-- 請將 href 中的 email 換成你的電子郵件 -->
+            <a href="mailto:your-email@example.com" class="btn btn-email">
+                Email Me
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
